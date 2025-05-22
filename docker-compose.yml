@@ -1,0 +1,14 @@
+version: '3.8' 
+
+services:
+  web:
+    build: . # Construye la imagen usando el Dockerfile en el directorio actual
+    container_name: flask_login_app # Nombre amigable para el contenedor
+    ports:
+      - "5000:5000" # Mapea el puerto 5000 del host al puerto 5000 del contenedor
+    volumes:
+      - .:/app 
+
+    environment:
+      FLASK_APP: app.py
+      FLASK_ENV: development # Para desarrollo (Flask 2.x recomienda esto en lugar de debug=True en app.run)

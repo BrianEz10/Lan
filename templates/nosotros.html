@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contacto</title>
+    <link rel="icon" type="image/png" href="/img/amd-icon.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/contacto.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+        <header class="encabezado-productos navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('index') }}">
+                <img class="logo-img me-2" src="/img/amd-icon.png" alt="Logo de tienda">
+                <h1 class="mb-0 fs-4 text-dark"></h1>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <nav class="ms-auto"> <ul class="navbar-nav"> <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('productos') }}">Productos</a>
+                        </li>
+                        {% if username %}
+                        <li class="bienvenida">
+                            <span class="bienvenida"><i class="fas fa-user-circle me-1"></i> Hola, {{ username }}</span>
+                        </li>
+                        <li class="close">
+                            <a class="close" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt me-1"></i> Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('register') }}"><i class="fas fa-user-plus me-1"></i> Registrarse</a>
+                        </li>
+                        {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+<article>
+    <h1 class="titulo">Sobre Nosotros</h1>
+    <p class="texto">Advanced Micro Devices (AMD) es una de las compañías tecnológicas más importantes del mundo, conocida principalmente por fabricar procesadores y tarjetas gráficas. Fue fundada en 1969 en California, Estados Unidos, como una alternativa a otras grandes empresas de semiconductores de la época. Desde el inicio, AMD se propuso competir con gigantes como Intel, fabricando chips y componentes electrónicos con un enfoque en innovación, rendimiento y precios accesibles. <br>
+        <br>
+        En sus primeros años, AMD fabricaba productos que seguían las especificaciones de otras empresas (como Intel), pero con el tiempo comenzó a desarrollar sus propios diseños y tecnologías. En la década de los 90, AMD logró captar una parte importante del mercado de procesadores para computadoras personales, sobre todo gracias a su línea de procesadores Athlon, que ofrecían un gran rendimiento a menor costo. Fue durante ese período que comenzó una competencia fuerte con Intel, que se ha mantenido hasta hoy. <br>
+        <br>
+        Una parte fundamental de la historia de AMD fue su adquisición de ATI Technologies en 2006, una empresa canadiense especializada en tarjetas gráficas. Con esto, AMD no solo fabricaba procesadores, sino también GPUs, lo que le permitió competir directamente con NVIDIA. Esta fusión dio lugar a productos integrados como las APU (unión de CPU y GPU en un solo chip), muy usados en computadoras de escritorio, laptops e incluso consolas de videojuegos como la PlayStation y Xbox. <br>
+        <br>
+        Aunque tuvo momentos difíciles, AMD se reinventó con el tiempo. A partir de 2017, la empresa resurgió con mucha fuerza gracias a su arquitectura Zen y la familia de procesadores Ryzen, que ofrecieron un rendimiento competitivo y precios atractivos frente a Intel. Esto revitalizó el mercado y obligó a sus competidores a mejorar también sus productos. <br>
+        <br>
+        En la actualidad, AMD es una empresa líder tanto en procesadores como en tarjetas gráficas. Sus productos son usados por millones de personas en computadoras de escritorio, servidores, estaciones de trabajo, consolas y supercomputadoras. Gracias a su enfoque en eficiencia, potencia y competencia, AMD ha logrado consolidarse como un actor clave en la industria tecnológica mundial.
+    </p>
+
+    <div class="volver">
+            <a href="{{ url_for('index') }}" class="Casita">
+                <img src="/img/casa.png" class="casita" alt="Volver al Inicio">
+                <span>VOLVER ATRAS</span>
+            </a>
+        </div>
+</article>
+</body>
+</html>
